@@ -1,0 +1,30 @@
+<div class="row" style="padding: 50px;">
+  <div class="col-md-8 offset-md-2">
+
+    <%= form_tag web_site_user_signed_up_path, method: :post do |f| %>
+    <div class="card">
+
+      <div class="card-body">
+        <div class="form-group">
+          <label class="col-form-label">Name</label>
+          <%= text_field_tag :name, @user.try(:name),class: "form-control"%>
+        </div>
+
+        <div class="form-group">
+          <label class="col-form-label">Email</label>
+          <%= text_field_tag :email, @user.try(:email),class: "form-control"%>
+        </div>
+
+        <div class="form-group">
+          <label class="col-form-label">Password</label>
+          <%= text_field_tag :password, @user.try(:password),class: "form-control"%>
+        </div>
+
+        <%= submit_tag "Sign Up", class: "btn btn-success"%>
+        <%= link_to "Cancel", root_path, class: "btn btn-light", style: "float: right" %>
+      </div><!-- card-body -->
+    </div><!-- card -->
+    <% end %>
+
+  </div><!-- col-md-6 offset-md-3 -->
+</div><!-- row -->

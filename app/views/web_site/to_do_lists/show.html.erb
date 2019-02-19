@@ -1,0 +1,25 @@
+<div class="row" style="padding: 50px;">
+  <div class="col-md-8 offset-md-2">
+
+    <div class="card">
+      <table class="table">
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><%= @to_do_list.title %></td>
+          <td><%= @to_do_list.description %></td>
+          <td>
+            <%= link_to "Edit", web_site_edit_to_do_list_path(@user.id,
+              @to_do_list.id), class: "btn btn-primary" %>
+          </td>
+           <td>
+            <%= link_to "Manage to-do items", web_site_to_do_items_index_path(@user.id, @to_do_list.id), class: "btn btn-success" %>
+          </td>
+        </tr>
+      </table>
+    </div><!--card-->
+
+  </div><!-- col-md-8-->
+</div><!-- row -->

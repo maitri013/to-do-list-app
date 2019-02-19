@@ -1,0 +1,36 @@
+<div class="row" style="padding: 50px;">
+  <div class="col-md-8 offset-md-2">
+
+  <% if @to_do_lists.count == 0 %>
+  <div class="card mb-3" style="width: 100%;">
+    <div class="card-body text-center">
+      <i class="icon fa fa-info"></i>
+      <h4>You don't have any to-do list created.</h4>
+      <%= link_to 'Add To-Do-List', web_site_new_to_do_list_path(@user.id), class: "btn btn-primary" %>
+    </div>
+  </div>
+  <%else%>
+  <div class="card">
+    <table class="table">
+      <tr>
+        <th>Title</th>
+        <th></th>
+      </tr>
+      <% @to_do_lists.each do |to_do_list| %>
+      <tr>
+        <td><%= to_do_list.title %></td>
+        <td>
+          <%= link_to "Show", web_site_show_to_do_list_path(@user.id, to_do_list.id), class: "btn btn-success" %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div><!--card-->
+  <%end%>
+
+  <div>
+    <%= will_paginate @to_do_lists %>
+  </div>
+
+</div>
+</div>
