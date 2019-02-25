@@ -1,20 +1,31 @@
-<div class="row" style="padding: 50px;">
+<div class="row">
   <div class="col-md-8 offset-md-2">
-
-    <%= form_tag web_site_create_to_do_item_path(@user.id, @to_do_list.id), method: :post do |f| %>
-    <div class="card">
-
+    <div class="card text-color">
+      <h4 class="card-title text-center">Create To-Do-Item</h4>
       <div class="card-body">
-        <div class="form-group">
-          <label class="col-form-label">Title</label>
-          <%= text_field_tag :title, @to_do_item.try(:title),class: "form-control", required: true %>
-        </div>
 
-        <%= submit_tag "Create", class: "btn btn-success"%>
-        <%= link_to "Cancel", root_path, class: "btn btn-light", style: "float: right" %>
+        <%= form_tag web_site_create_to_do_item_path(@user.id, @to_do_list.id), method: :post do |f| %>
+          <% if @to_do_item.errors.size() > 0 %>
+            <div class="alert alert-danger">
+              <ul>
+                <% @to_do_item.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <%end%>
+
+          <div class="form-group">
+            <label class="col-form-label">Title</label>
+            <%= text_field_tag :title, @to_do_item.try(:title),class: "form-control", required: true %>
+          </div>
+
+          <%= submit_tag "Create", class: "btn btn-success"%>
+          <%= link_to "Cancel", web_site_to_do_items_index_path(@user.id, @to_do_list.id, @to_do_item.id), class: "btn btn-light", style: "float: right" %>
+
+        <% end %>
+
       </div><!-- card-body -->
     </div><!-- card -->
-    <% end %>
-
   </div><!-- col-md-6 offset-md-3 -->
 </div><!-- row -->

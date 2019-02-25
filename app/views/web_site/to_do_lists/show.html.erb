@@ -1,21 +1,33 @@
-<div class="row" style="padding: 50px;">
-  <div class="col-md-8 offset-md-2">
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
 
-    <div class="card">
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div class="card text-color">
+      <h4 class="card-title text-center">To-Do-List
+        <%= link_to 'Back', web_site_to_do_list_index_path(@user.id), class: "btn btn-sm btn-success flat", style: "float: right; margin-right: 20px;"%>
+      </h4>
       <table class="table">
         <tr>
           <th>Title</th>
           <th>Description</th>
+          <th></th>
+          <th></th>
         </tr>
         <tr>
           <td><%= @to_do_list.title %></td>
           <td><%= @to_do_list.description %></td>
           <td>
             <%= link_to "Edit", web_site_edit_to_do_list_path(@user.id,
-              @to_do_list.id), class: "btn btn-primary" %>
+              @to_do_list.id)%>
           </td>
-           <td>
-            <%= link_to "Manage to-do items", web_site_to_do_items_index_path(@user.id, @to_do_list.id), class: "btn btn-success" %>
+          <td>
+            <%= link_to "Manage Items", web_site_to_do_items_index_path(@user.id,
+              @to_do_list.id)%>
           </td>
         </tr>
       </table>

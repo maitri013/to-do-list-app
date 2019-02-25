@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #D4E6F1;
+  height: 100vh;
+}
+
+#login .container #login-row #login-column #login-box {
+  margin-top: 50px;
+  max-width: 600px;
+  height: 400px;
+  border: 1px solid #9C9C9C;
+  background-color: #EAEAEA;
+}
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 20px;
+}
+#login .container #login-row #login-column #login-box #login-form #register-link {
+  margin-top: -50px;
+}
+
+.card {
+  padding-top: 3rem!important;
+  margin-top: 150px;
+  background-color: #EAEAEA;
+}
+
+.text-color{
+  color: #17a2b8;
+}
+
+.alert-success{
+  text-align: center;
+  margin-top: 30px;
+  color: green;
+}
+
+.alert-danger{
+  text-align: center;
+  margin-top: 30px;
+  color: #E01E30;
+}
+
+.pagination {
+  justify-content: center;
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+  flex-wrap: wrap;
+}
+
+.flickr_pagination {
+  text-align: center;
+  padding: 0.3em;
+  cursor: default;
+  }
+
+.flickr_pagination a, .flickr_pagination span, .flickr_pagination em {
+  padding: 0.2em 0.5em;
+}
+
+.flickr_pagination .disabled {
+  color: #aaaaaa;
+}
+
+.flickr_pagination .current {
+  font-style: normal;
+  font-weight: bold;
+  color: #ff0084;
+}
+
+.flickr_pagination li {
+  margin-top: 4px;
+}
+
+.flickr_pagination a {
+  border: 1px solid #dddddd;
+  background-color: white;
+  font-size: 18px;
+  text-decoration: none; }
+  .flickr_pagination a:hover, .flickr_pagination a:focus {
+    border-color: #003366;
+    background: #0063dc;
+    color: white;
+}
+
+.flickr_pagination .page_info {
+  color: #aaaaaa;
+  padding-top: 0.8em;
+}
+
+.flickr_pagination .previous_page, .flickr_pagination .next_page {
+  border-width: 2px;
+}

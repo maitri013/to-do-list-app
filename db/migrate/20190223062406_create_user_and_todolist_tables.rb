@@ -5,7 +5,7 @@ class CreateUserAndTodolistTables < ActiveRecord::Migration[5.2]
       t.string :password
       t.string :name
       t.string :mobile_number
-      t.boolean :signed_up, default: false
+      t.string :password_digest
 
       t.timestamps
     end

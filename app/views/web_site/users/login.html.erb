@@ -1,0 +1,52 @@
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+
+<body>
+  <div id="login">
+      <h3 class="text-center text-color pt-5">To-Do-List</h3>
+      <div class="container">
+        <% if @user.errors.size() > 0 %>
+          <div class="alert alert-danger">
+            <ul>
+              <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+          <%end%>
+          <div id="login-row" class="row justify-content-center align-items-center">
+              <div id="login-column" class="col-md-6">
+                  <div id="login-box" class="col-md-12 text-color">
+                      <form id="login-form" class="form" action="/user_logged_in" method="get">
+                          <h4 class="text-center">Let's start.</h4>
+                          <div class="form-group">
+                              <label for="username">Username:</label><br>
+                              <input type="text" name="username" id="username" class="form-control">
+                          </div>
+                          <div class="form-group">
+                              <label for="email">Email:</label><br>
+                              <input type="text" name="email" id="email" class="form-control" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="password">Password:</label><br>
+                              <input type="text" name="password" id="password" class="form-control" required>
+                          </div>
+                          <div class="form-group text-center">
+                              <input type="submit" name="submit" class="btn btn-info btn-md" value="Log in to your account">
+                          </div>
+                      </form>
+                      <div style="margin-top: 50px; text-align: center;">
+                        <span class="text-color" style="font-size: 15px;">Don't have an account?</span>
+                        <br>
+                        <a href="/users/sign_up" class="text-color">Register here</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</body>

@@ -39,6 +39,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Paginated queries with Active Record
 gem 'will_paginate', '~> 3.1'
 
+# Open email in browser instead of sending it.
+gem 'letter_opener', '~> 1.4', '>= 1.4.1'
+
+gem 'bcrypt'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

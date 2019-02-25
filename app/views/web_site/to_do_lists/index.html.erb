@@ -1,36 +1,46 @@
-<div class="row" style="padding: 50px;">
+<div class="row">
   <div class="col-md-8 offset-md-2">
+    <div class="card text-color">
+      <div class="card-body text-center" style="margin-bottom: 35px;">
+        <% if @to_do_lists.count == 0 %>
+          <h4 class="text-color">You don't have any to-do list created.</h4>
+          <%= link_to 'Create To-Do-List', web_site_new_to_do_list_path(@user.id), class: "btn btn-success" %>
+        <%else%>
+          <h4 class="card-title text-center">Your To-Do-Lists
+          <%= link_to 'Create To-Do-List', web_site_new_to_do_list_path(@user.id), class: "btn btn-sm btn-success flat", style: "float: right;"%>
+          </h4>
+          <table class="table">
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th></th>
+              <th></th>
+            </tr>
+            <% @to_do_lists.each do |to_do_list| %>
+            <tr>
+              <td><%= to_do_list.title %></td>
+              <td><%= to_do_list.description %></td>
+              <td>
+                <%= link_to "Edit", web_site_edit_to_do_list_path(@user.id,
+                to_do_list.id)%>
+              </td>
+              <td>
+                <%= link_to "Manage Items", web_site_to_do_items_index_path(@user.id, to_do_list.id)%>
+              </td>
+            </tr>
+            <% end %>
+          </table>
+        <%end%>
 
-  <% if @to_do_lists.count == 0 %>
-  <div class="card mb-3" style="width: 100%;">
-    <div class="card-body text-center">
-      <i class="icon fa fa-info"></i>
-      <h4>You don't have any to-do list created.</h4>
-      <%= link_to 'Add To-Do-List', web_site_new_to_do_list_path(@user.id), class: "btn btn-primary" %>
-    </div>
-  </div>
-  <%else%>
-  <div class="card">
-    <table class="table">
-      <tr>
-        <th>Title</th>
-        <th></th>
-      </tr>
-      <% @to_do_lists.each do |to_do_list| %>
-      <tr>
-        <td><%= to_do_list.title %></td>
-        <td>
-          <%= link_to "Show", web_site_show_to_do_list_path(@user.id, to_do_list.id), class: "btn btn-success" %>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div><!--card-->
-  <%end%>
+        <div class="flickr_pagination">
+          <div class="page_info">
+            <%= page_entries_info @to_do_lists, :model => 'to_do_list' %>
+          </div>
+            <%= will_paginate @to_do_lists %>
+        </div>
 
-  <div>
-    <%= will_paginate @to_do_lists %>
-  </div>
+      </div><!--card-body-->
+    </div><!--card-->
 
-</div>
-</div>
+  </div><!--col-->
+</div><!--row-->

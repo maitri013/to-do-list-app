@@ -1,36 +1,46 @@
-<div class="row" style="padding: 50px;">
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+
+<div class="row">
   <div class="col-md-8 offset-md-2">
+     <div class="card text-color">
+      <div class="card-body text-center" style="margin-bottom: 35px;">
+        <% if @to_do_items.count == 0 %>
+          <h4>You haven't created any to-do items in this list.</h4>
+          <%= link_to 'Add To-Do-List Item', web_site_new_to_do_item_path(@user.id, @to_do_list.id), class: "btn btn-success" %>
+        <%else%>
+          <h4 class="card-title text-center">Your To-Do-Items
+          <%= link_to 'Create To-Do-Item', web_site_new_to_do_item_path(@user.id, @to_do_list.id), class: "btn btn-sm btn-success flat", style: "float: right;"%>
+          </h4>
+          <table class="table">
+            <tr>
+              <th>Title</th>
+              <th></th>
+            </tr>
+            <% @to_do_items.each do |to_do_item| %>
+            <tr>
+              <td><%= to_do_item.title %></td>
+              <td>
+                <%= link_to "Edit", web_site_edit_to_do_item_path(@user.id, @to_do_list.id, to_do_item.id)%>
+              </td>
+            </tr>
+            <% end %>
+          </table>
+        <%end%>
 
-  <% if @to_do_items.count == 0 %>
-  <div class="card mb-3" style="width: 100%;">
-    <div class="card-body text-center">
-      <i class="icon fa fa-info"></i>
-      <h4>You haven't created any to-do items in this list.</h4>
-      <%= link_to 'Add To-Do-List Item', web_site_new_to_do_item_path(@user.id, @to_do_list.id), class: "btn btn-primary" %>
-    </div>
-  </div>
-  <%else%>
-  <div class="card">
-    <table class="table">
-      <tr>
-        <th>Title</th>
-        <th></th>
-      </tr>
-      <% @to_do_items.each do |to_do_item| %>
-      <tr>
-        <td><%= to_do_item.title %></td>
-        <td>
-          <%= link_to "Edit", web_site_edit_to_do_item_path(@user.id, @to_do_list.id, to_do_item.id), class: "btn btn-success" %>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div><!--card-->
-  <%end%>
+        <div class="flickr_pagination">
+          <div class="page_info">
+            <%= page_entries_info @to_do_items, :model => 'to_do_item' %>
+          </div>
+            <%= will_paginate @to_do_items %>
+        </div>
 
-  <div>
-    <%= will_paginate @to_do_items %>
-  </div>
+      </div><!--card-body-->
+    </div><!--card-->
 
-</div>
-</div>
+  </div><!--col-->
+</div><!--row-->

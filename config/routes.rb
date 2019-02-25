@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'home#home_page'
 
   namespace :web_site, path: "/" do
+
+    root 'users#login'
 
     get "users/sign_up" => "users#sign_up", as: :user_sign_up
     post "user_signed_up" => "users#user_signed_up", as: :user_signed_up
 
     get "users/login" => "users#login", as: :user_login
-    put "user_logged_in" => "users#user_logged_in", as: :user_logged_in
+    get "user_logged_in" => "users#user_logged_in", as: :user_logged_in
 
     #to_do_lists
     get "user/:id/to_do_lists" => "to_do_lists#index",as: :to_do_list_index
@@ -24,7 +25,6 @@ Rails.application.routes.draw do
 
     #to_do_items
     get "user/:id/to_do_lists/:to_do_list_id/to_do_items" => "to_do_items#index",as: :to_do_items_index
-    get "user/:id/to_do_lists/:to_do_list_id/to_do_items/:to_do_item" => "to_do_items#show",as: :show_to_do_item
 
     get "user/:id/to_do_lists/:to_do_list_id/new_to_do_items" => "to_do_items#new",as: :new_to_do_item
     post "user/:id/to_do_lists/:to_do_list_id/create_to_do_items" => "to_do_items#create",as: :create_to_do_item

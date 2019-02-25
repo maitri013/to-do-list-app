@@ -13,14 +13,10 @@ class WebSite::ToDoItemsController < WebSite::BaseController
   def create
     @to_do_item = @to_do_list.to_do_items.new(to_do_item_params)
     if @to_do_item.save
-      redirect_to web_site_to_do_items_index_path(@user.id, @to_do_list.id), notice: 'Your to-do item is successfully created.'
+      redirect_to web_site_to_do_items_index_path(@user.id, @to_do_list.id), notice: "To-do item created successfully."
     else
       render action: "new"
     end
-  end
-
-  def show
-    @to_do_item = ToDoItem.find(params[:to_do_item_id])
   end
 
   def edit
@@ -30,7 +26,7 @@ class WebSite::ToDoItemsController < WebSite::BaseController
   def update
     @to_do_item = ToDoItem.find(params[:to_do_item_id])
     if @to_do_item.update_attributes(to_do_item_params)
-      redirect_to web_site_show_to_do_item_path(@user.id, @to_do_list.id ,@to_do_item.id), notice: 'To-do item was successfully updated.'
+      redirect_to web_site_to_do_items_index_path(@user.id, @to_do_list.id), notice: "To-do item updated successfully."
     else
       render action: "edit"
     end
@@ -39,7 +35,6 @@ class WebSite::ToDoItemsController < WebSite::BaseController
   def delete
     @to_do_item = ToDoItem.find(params[:to_do_item_id])
     @to_do_item.destroy
-    flash[:notice] = "To-do item deleted successfully."
     redirect_to web_site_to_do_items_index_path(@user.id, @to_do_list.id)
   end
 

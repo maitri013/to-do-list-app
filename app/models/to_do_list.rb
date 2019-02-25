@@ -6,6 +6,7 @@ class ToDoList < ApplicationRecord
   #belongs_to
   belongs_to :user
 
-  validates :title, length: { maximum: 120 }
+  validates :title, presence: true, length: { maximum: 120 }
+  validates :description, length: { maximum: 160 }
 
 end
